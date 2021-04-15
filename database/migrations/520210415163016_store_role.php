@@ -4,7 +4,7 @@ use think\migration\Migrator;
 use think\migration\db\Column;
 use Phinx\Db\Adapter\MysqlAdapter;
 
-class SqStoreRole extends Migrator
+class StoreRole extends Migrator
 {
     /**
      * Change Method.

@@ -4,7 +4,7 @@ use think\migration\Migrator;
 use think\migration\db\Column;
 use Phinx\Db\Adapter\MysqlAdapter;
 
-class SqRegion extends Migrator
+class Region extends Migrator
 {
     /**
      * Change Method.

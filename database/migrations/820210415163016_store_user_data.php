@@ -3,7 +3,7 @@
 use think\migration\Migrator;
 use think\migration\db\Column;
 
-class DataSqStoreUser extends Migrator
+class StoreUserData extends Migrator
 {
     public function up()
     {
