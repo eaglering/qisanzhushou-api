@@ -1,0 +1,13 @@
+<?php
+declare(strict_types=1);
+
+namespace app\core\logic{%namespace%};
+
+use app\core\logic\Logic;
+
+class {%className%}Logic extends Logic
+{
+    public function __construct()
+    {
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "name": "eaglering/qisanzhushou-api",
+    "description": "An open source website navigator",
+    "type": "project",
+    "keywords": [
+        "网址导航",
+        "thinkphp6",
+        "navigator"
+    ],
+    "homepage": "https://qisanzhushou.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "eaglering",
+            "email": "442958506@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "topthink/framework": "^6.0.0",
+        "topthink/think-orm": "^2.0",
+        "topthink/think-multi-app": "^1.0",
+        "topthink/think-view": "^1.0",
+        "thans/tp-jwt-auth": "^1.1",
+        "imangazaliev/didom": "^1.16",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "phpmailer/phpmailer": "^6.4",
+        "jaguarjack/migration-generator": "dev-master",
+        "topthink/think-migration": "^3.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.2",
+        "topthink/think-trace":"^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        },
+        "psr-0": {
+            "": "extend/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php think service:discover",
+            "@php think vendor:publish"
+        ]
+    }
+}

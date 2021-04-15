@@ -1,0 +1,10 @@
+<?php
+declare (strict_types = 1);
+
+namespace app\backend\model{%namespace%};
+
+use app\core\model{%namespace%}\{%className%}Model as Base{%className.camel%}Model;
+
+class {%className%}Model extends Base{%className.camel%}Model
+{
+}
