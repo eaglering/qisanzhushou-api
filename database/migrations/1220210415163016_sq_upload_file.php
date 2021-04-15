@@ -29,7 +29,7 @@ class SqUploadFile extends Migrator
      */
     public function change()
     {
-        $table = $this->table('sq_upload_file', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '文件库记录表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
+        $table = $this->table('upload_file', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '文件库记录表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
         $table->addColumn('storage', 'string', ['limit' => 20,'null' => false,'default' => '','signed' => true,'comment' => '存储方式',])
 			->addColumn('group_id', 'integer', ['limit' => MysqlAdapter::INT_REGULAR,'null' => false,'default' => 0,'signed' => false,'comment' => '文件分组id',])
 			->addColumn('file_object', 'string', ['limit' => 255,'null' => false,'default' => '','signed' => true,'comment' => '存储域名',])

@@ -29,7 +29,7 @@ class SqNavigatorCategory extends Migrator
      */
     public function change()
     {
-        $table = $this->table('sq_navigator_category', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '网址导航分类' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
+        $table = $this->table('navigator_category', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '网址导航分类' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
         $table->addColumn('type', 'boolean', ['null' => false,'default' => 0,'signed' => false,'comment' => '类型 1首页推荐 2首页速查 3首页综合 4文档 5工具 6项目',])
 			->addColumn('name', 'string', ['limit' => 100,'null' => false,'default' => '','signed' => true,'comment' => '分类名称',])
 			->addColumn('parent_id', 'integer', ['limit' => MysqlAdapter::INT_REGULAR,'null' => false,'default' => 0,'signed' => false,'comment' => '父级',])

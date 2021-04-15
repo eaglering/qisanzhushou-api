@@ -29,7 +29,7 @@ class SqStoreUser extends Migrator
      */
     public function change()
     {
-        $table = $this->table('sq_store_user', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '管理员用户表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
+        $table = $this->table('store_user', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '管理员用户表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
         $table->addColumn('username', 'string', ['limit' => 32,'null' => false,'default' => '','signed' => true,'comment' => '用户名',])
 			->addColumn('password', 'string', ['limit' => 60,'null' => false,'default' => '','signed' => true,'comment' => '密码',])
 			->addColumn('phone', 'string', ['limit' => 20,'null' => true,'signed' => true,'comment' => '手机号',])

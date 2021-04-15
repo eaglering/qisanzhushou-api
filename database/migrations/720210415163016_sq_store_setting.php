@@ -29,7 +29,7 @@ class SqStoreSetting extends Migrator
      */
     public function change()
     {
-        $table = $this->table('sq_store_setting', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '商城设置记录表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
+        $table = $this->table('store_setting', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '商城设置记录表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
         $table->addColumn('key', 'string', ['limit' => 30,'null' => false,'default' => '','signed' => true,'comment' => '设置项标示',])
 			->addColumn('describe', 'string', ['limit' => 255,'null' => false,'default' => '','signed' => true,'comment' => '设置项描述',])
 			->addColumn('values', 'text', ['limit' => MysqlAdapter::TEXT_MEDIUM,'null' => true,'signed' => true,'comment' => '设置内容（json格式）',])

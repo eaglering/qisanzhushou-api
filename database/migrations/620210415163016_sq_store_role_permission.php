@@ -29,7 +29,7 @@ class SqStoreRolePermission extends Migrator
      */
     public function change()
     {
-        $table = $this->table('sq_store_role_permission', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '角色的权限表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
+        $table = $this->table('store_role_permission', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '角色的权限表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
         $table->addColumn('role_id', 'integer', ['limit' => MysqlAdapter::INT_REGULAR,'null' => false,'default' => 0,'signed' => false,'comment' => '角色id',])
 			->addColumn('permission_id', 'integer', ['limit' => MysqlAdapter::INT_REGULAR,'null' => false,'default' => 0,'signed' => false,'comment' => '权限id',])
 			->addColumn('created_at', 'datetime', ['null' => false,'default' => 'CURRENT_TIMESTAMP','signed' => true,'comment' => '创建时间',])

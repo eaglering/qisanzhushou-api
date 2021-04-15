@@ -29,7 +29,7 @@ class SqStorePermission extends Migrator
      */
     public function change()
     {
-        $table = $this->table('sq_store_permission', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '商户权限列表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
+        $table = $this->table('store_permission', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '商户权限列表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
         $table->addColumn('name', 'string', ['limit' => 255,'null' => false,'default' => '','signed' => true,'comment' => '权限名称',])
 			->addColumn('url', 'string', ['limit' => 255,'null' => true,'signed' => true,'comment' => '权限url',])
 			->addColumn('parent_id', 'integer', ['limit' => MysqlAdapter::INT_REGULAR,'null' => false,'default' => 0,'signed' => false,'comment' => '父级权限id',])

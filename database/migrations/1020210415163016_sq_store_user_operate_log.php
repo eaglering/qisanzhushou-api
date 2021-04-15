@@ -29,7 +29,7 @@ class SqStoreUserOperateLog extends Migrator
      */
     public function change()
     {
-        $table = $this->table('sq_store_user_operate_log', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '操作日志' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
+        $table = $this->table('store_user_operate_log', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '操作日志' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
         $table->addColumn('title', 'string', ['limit' => 32,'null' => false,'default' => '','signed' => true,'comment' => '标题',])
 			->addColumn('business_type', 'boolean', ['null' => false,'default' => 0,'signed' => false,'comment' => '业务类型 0 其他 1 新增 2 修改 3 删除',])
 			->addColumn('method', 'string', ['limit' => 255,'null' => false,'default' => '','signed' => true,'comment' => '方法名称',])

@@ -17,6 +17,6 @@ class DataSqStoreUser extends Migrator
             'is_lock' => 0,
             'is_delete' => 0
         ];
-        $this->table('sq_store_user')->insert($singleRow)->saveData();
+        $this->table('store_user')->insert($singleRow)->saveData();
     }
 }

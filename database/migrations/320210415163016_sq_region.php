@@ -29,7 +29,7 @@ class SqRegion extends Migrator
      */
     public function change()
     {
-        $table = $this->table('sq_region', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
+        $table = $this->table('region', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
         $table->addColumn('pid', 'integer', ['limit' => MysqlAdapter::INT_REGULAR,'null' => false,'default' => 0,'signed' => false,'comment' => '父id',])
 			->addColumn('shortname', 'string', ['limit' => 100,'null' => false,'default' => '','signed' => true,'comment' => '简称',])
 			->addColumn('name', 'string', ['limit' => 100,'null' => false,'default' => '','signed' => true,'comment' => '名称',])

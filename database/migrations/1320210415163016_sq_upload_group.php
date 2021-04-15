@@ -29,7 +29,7 @@ class SqUploadGroup extends Migrator
      */
     public function change()
     {
-        $table = $this->table('sq_upload_group', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '文件库分组记录表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
+        $table = $this->table('upload_group', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '文件库分组记录表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
         $table->addColumn('type', 'boolean', ['null' => false,'default' => 0,'signed' => false,'comment' => '文件类型',])
 			->addColumn('name', 'string', ['limit' => 30,'null' => false,'default' => '','signed' => true,'comment' => '分类名称',])
 			->addColumn('sort', 'integer', ['limit' => MysqlAdapter::INT_REGULAR,'null' => false,'default' => 0,'signed' => false,'comment' => '分类排序(数字越小越靠前)',])

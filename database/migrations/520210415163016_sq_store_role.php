@@ -29,7 +29,7 @@ class SqStoreRole extends Migrator
      */
     public function change()
     {
-        $table = $this->table('sq_store_role', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '管理员角色表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
+        $table = $this->table('store_role', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '管理员角色表' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
         $table->addColumn('name', 'string', ['limit' => 50,'null' => false,'default' => '','signed' => true,'comment' => '角色名称',])
 			->addColumn('parent_id', 'integer', ['limit' => MysqlAdapter::INT_REGULAR,'null' => false,'default' => 0,'signed' => false,'comment' => '父角色id',])
 			->addColumn('sort', 'integer', ['limit' => MysqlAdapter::INT_REGULAR,'null' => false,'default' => 0,'signed' => false,'comment' => '排序(数字越小越靠前)',])

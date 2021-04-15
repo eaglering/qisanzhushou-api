@@ -29,7 +29,7 @@ class SqNavigatorSite extends Migrator
      */
     public function change()
     {
-        $table = $this->table('sq_navigator_site', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '网址' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
+        $table = $this->table('navigator_site', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '网址' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
         $table->addColumn('hash_code', 'string', ['limit' => 32,'null' => false,'default' => '','signed' => true,'comment' => '哈希值',])
 			->addColumn('type', 'boolean', ['null' => false,'default' => 0,'signed' => false,'comment' => '参考category.type',])
 			->addColumn('category_id', 'integer', ['limit' => MysqlAdapter::INT_REGULAR,'null' => false,'default' => 0,'signed' => false,'comment' => '分类编号',])

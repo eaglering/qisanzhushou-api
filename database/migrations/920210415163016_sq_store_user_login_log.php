@@ -29,7 +29,7 @@ class SqStoreUserLoginLog extends Migrator
      */
     public function change()
     {
-        $table = $this->table('sq_store_user_login_log', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '登录日志' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
+        $table = $this->table('store_user_login_log', ['engine' => 'InnoDB', 'collation' => 'utf8mb4_general_ci', 'comment' => '登录日志' ,'id' => 'id','signed' => true ,'primary_key' => ['id']]);
         $table->addColumn('title', 'string', ['limit' => 32,'null' => false,'default' => '','signed' => true,'comment' => '标题',])
 			->addColumn('user_id', 'integer', ['limit' => MysqlAdapter::INT_REGULAR,'null' => false,'default' => 0,'signed' => false,'comment' => '用户id',])
 			->addColumn('username', 'string', ['limit' => 32,'null' => false,'default' => '','signed' => true,'comment' => '用户名',])
