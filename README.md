@@ -4,7 +4,7 @@
 THINKPHP6 + Vue + ElementUI，支持JWT登录，RBAC，一键CRUD。
 
 ### 演示地址
-[点击这里](https://www.qisangongzhu.com)
+[点击这里](https://www.qisanzhushou.com)
 
 ### SPA源码
 联系QQ：442958506
