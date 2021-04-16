@@ -14,6 +14,8 @@ return [
     'close'        => false,
     // 全局日志处理 支持闭包
     'processor'    => null,
+    // 记录trace日志
+    'record_trace' => true,
 
     // 日志通道列表
     'channels'     => [
@@ -40,6 +42,6 @@ return [
             'realtime_write' => false,
         ],
         // 其它日志通道配置
+        'feishu' => env('log.feishu', false)
     ],
-
 ];

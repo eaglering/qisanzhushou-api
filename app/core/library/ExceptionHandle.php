@@ -1,6 +1,7 @@
 <?php
 namespace app\core\library;
 
+use Exception;
 use think\db\exception\DataNotFoundException;
 use think\db\exception\ModelNotFoundException;
 use think\exception\Handle;
@@ -15,16 +16,19 @@ use Throwable;
  */
 class ExceptionHandle extends Handle
 {
+    /** @var App */
+    protected $app;
+
     /**
      * 不需要记录信息（日志）的异常类列表
      * @var array
      */
     protected $ignoreReport = [
-        HttpException::class,
-        HttpResponseException::class,
-        ModelNotFoundException::class,
-        DataNotFoundException::class,
-        ValidateException::class,
+//        HttpException::class,
+//        HttpResponseException::class,
+//        ModelNotFoundException::class,
+//        DataNotFoundException::class,
+//        ValidateException::class,
     ];
 
     /**
@@ -36,8 +40,43 @@ class ExceptionHandle extends Handle
      */
     public function report(Throwable $exception): void
     {
-        // 使用内置的方式记录异常日志
-        parent::report($exception);
+        if (!$this->isIgnoreReport($exception)) {
+            // 收集异常数据
+            $data = [
+                'file'    => $exception->getFile(),
+                'line'    => $exception->getLine(),
+                'message' => $this->getMessage($exception),
+                'code'    => $this->getCode($exception),
+            ];
+            $log = "[{$data['code']}]{$data['message']}[{$data['file']}:{$data['line']}]";
+
+            if ($this->app->config->get('log.record_trace')) {
+                $log .= PHP_EOL . $exception->getTraceAsString();
+            }
+
+            try {
+                $this->app->log->record($log, 'error');
+            } catch (Exception $e) {}
+
+            try {
+                $robot = $this->app->config->get('log.channels.feishu');
+                if ($robot) {
+                    $env = strtoupper($this->app->env());
+                    curlPost($robot, json_encode([
+                        'msg_type' => 'text',
+                        'content' => [
+                            'text' => "<at user_id=\"all\"> </at> {$env} Exception\r\n{$log}"
+                        ]
+                    ], JSON_UNESCAPED_SLASHES), [
+                        'timeout' => 5,
+                        'header' => [
+                            'Content-type: application/json;charset=utf-8',
+                            'Accept: application/json'
+                        ]
+                    ]);
+                }
+            } catch (Exception $e) {}
+        }
     }
 
     /**

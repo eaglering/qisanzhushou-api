@@ -25,6 +25,12 @@ if (!function_exists('filterable_integer')) {
 }
 
 if (!function_exists('filterable_string')) {
+    /**
+     * 判断变量是否为字符串类型
+     * @param $array
+     * @param $field
+     * @return bool
+     */
     function filterable_string($array, $field) {
         return isset($array[$field]) && is_string($array[$field]) && trim($array[$field]) !== '';
     }
@@ -57,7 +63,81 @@ if (!function_exists('array_merge_multiple')) {
     }
 }
 
+if (!function_exists('curl')) {
+    /**
+     * curl请求指定url (get)
+     * @param $url
+     * @param array $data
+     * @param array $options
+     * @return mixed
+     * @throws Exception
+     */
+    function curl($url, $data = [], $options = [])
+    {
+        // 处理get数据
+        if (!empty($data)) {
+            $flag = strpos($url, '?') === false ? '?' : '&';
+            $url = $url . $flag . http_build_query($data);
+        }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);//这个是重点。
+        !empty($options['timeout']) && curl_setopt($ch, CURLOPT_TIMEOUT, $options['timeout']);
+        $result = curl_exec($ch);
+        if ($result) {
+            curl_close($ch);
+            return $result;
+        }
+        $code = curl_errno($ch);
+        $msg = curl_error($ch);
+        curl_close($ch);
+        throw new \Exception($msg, $code);
+    }
+}
+
+if (!function_exists('curlPost')) {
+    /**
+     * curl请求指定url (post)
+     * @param $url
+     * @param array $data
+     * @param array $options
+     * @return mixed
+     * @throws Exception
+     */
+    function curlPost($url, $data = [], $options = [])
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        !empty($options['timeout']) && curl_setopt($ch, CURLOPT_TIMEOUT, $options['timeout']);
+        !empty($options['header']) && curl_setopt($ch, CURLOPT_HTTPHEADER, $options['header']);
+        $result = curl_exec($ch);
+        if ($result) {
+            curl_close($ch);
+            return $result;
+        }
+        $code = curl_errno($ch);
+        $msg = curl_error($ch);
+        curl_close($ch);
+        throw new \Exception($msg, $code);
+    }
+}
+
 if (!function_exists('list2tree')) {
+    /**
+     * 无线级列表转树
+     * @param $list
+     * @param string $pk
+     * @param string $pid
+     * @param string $child
+     * @return array
+     */
     function list2tree($list, $pk = 'id', $pid = 'parent_id', $child = 'children') {
         $refs = [];
         foreach ($list as $key => $item) {
