@@ -7,11 +7,12 @@ use app\backend\model\navigator\SiteModel as NavigatorSiteModel;
 use app\core\enums\navigator\site\StatusEnum;
 use app\core\library\Document;
 use DiDom\Query;
+use Exception;
 use think\console\Command;
 use think\console\Input;
 use think\console\Output;
 use think\facade\App;
-use think\Facade\Db;
+use think\facade\Db;
 
 class CaptureCommand extends Command
 {
@@ -96,7 +97,7 @@ class CaptureCommand extends Command
                             ->where('id', '=', $site['id'])
                             ->save(['title' => $title, 'favicon' => $favicon, 'description' => $description,
                                 'is_captured' => 1, 'status' => StatusEnum::ONLINE]);
-                    } catch (\Exception $e) {
+                    } catch (Exception $e) {
                         echo $e->getMessage(), ' at ', $e->getFile(), ':', $e->getLine(), PHP_EOL;
                     }
                 }
