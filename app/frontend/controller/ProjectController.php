@@ -1,10 +1,14 @@
 <?php
 namespace app\frontend\controller;
 
+use app\frontend\logic\navigator\CategoryLogic;
+
 class ProjectController extends Controller
 {
     public function index()
     {
-        return view();
+        $categoryLogic = new CategoryLogic();
+        $quickSearch = $categoryLogic->getProjectQuickSearch();
+        return view()->assign(compact('quickSearch'));
     }
 }

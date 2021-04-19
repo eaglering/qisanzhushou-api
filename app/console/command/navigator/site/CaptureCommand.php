@@ -5,7 +5,7 @@ namespace app\console\command\navigator\site;
 
 use app\backend\model\navigator\SiteModel as NavigatorSiteModel;
 use app\core\enums\navigator\site\StatusEnum;
-use DiDom\Document;
+use app\core\library\Document;
 use DiDom\Query;
 use think\console\Command;
 use think\console\Input;
@@ -17,7 +17,7 @@ class CaptureCommand extends Command
 {
     protected function configure()
     {
-        $this->setName("navigator:site.capture");
+        $this->setName("navigator.site:capture");
     }
 
     protected function execute(Input $input, Output $output)
@@ -39,7 +39,6 @@ class CaptureCommand extends Command
                         }
                         $hashCode = md5("{$scheme}://{$host}");
                         $document = new Document($site['url'], true);
-//                        if ($site['id'] === 7) echo $document->html();
                         $titles = $document->find('/html/head/title', Query::TYPE_XPATH);
                         $title = $titles ? $titles[0]->text() : '';
                         $favicons = $document->find("/html/head/link[contains(@rel, 'shortcut icon')]", Query::TYPE_XPATH);

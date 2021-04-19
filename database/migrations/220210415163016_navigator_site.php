@@ -41,7 +41,7 @@ class NavigatorSite extends Migrator
 			->addColumn('status', 'boolean', ['null' => false,'default' => 0,'signed' => false,'comment' => '状态 10上架 20下架',])
 			->addColumn('is_captured', 'boolean', ['null' => false,'default' => 0,'signed' => false,'comment' => '是否已采集',])
 			->addColumn('sort', 'integer', ['limit' => MysqlAdapter::INT_REGULAR,'null' => false,'default' => 0,'signed' => false,'comment' => '排序',])
-			->addColumn('is_hot', 'boolean', ['null' => true,'signed' => false,'comment' => '推荐',])
+			->addColumn('is_hot', 'boolean', ['null' => false,'default' => 0,'signed' => false,'comment' => '推荐',])
 			->addColumn('created_at', 'datetime', ['null' => false,'default' => 'CURRENT_TIMESTAMP','signed' => true,'comment' => '采集时间',])
 			->addColumn('updated_at', 'datetime', ['null' => false,'default' => 'CURRENT_TIMESTAMP','signed' => true,'comment' => '更新时间',])
 			->addIndex(['category_id'], ['name' => 'ix_category_id'])

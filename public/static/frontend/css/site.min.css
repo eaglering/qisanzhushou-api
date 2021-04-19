@@ -82,7 +82,6 @@ a.underline {
     text-align: center;
     background: #2f3448;
     padding: 0;
-    margin-bottom: 20px;
 }
 
 .carousel .container {
@@ -125,6 +124,10 @@ a.underline {
 
 .carousel .search .form-control {
     font-size: 14px;
+}
+
+.projects {
+    margin-top: 20px;
 }
 
 .projects .panel-box {

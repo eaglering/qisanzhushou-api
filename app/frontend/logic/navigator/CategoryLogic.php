@@ -32,6 +32,22 @@ class CategoryLogic
         return $this->getCategory(TypeEnum::HOME_COMPREHENSIVE);
     }
 
+    /**
+     * 获取工具
+     * @return array
+     */
+    public function getToolQuickSearch() {
+        return $this->getCategory(TypeEnum::TOOL);
+    }
+
+    /**
+     * 获取项目推荐
+     * @return array
+     */
+    public function getProjectQuickSearch() {
+        return $this->getCategory(TypeEnum::PROJECT);
+    }
+
     public function getCategory($type) {
         return $this->categoryModel->where('type', '=', $type)
             ->order('parent_id', 'asc')

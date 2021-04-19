@@ -51,7 +51,7 @@ class CategoryController extends Controller
         $params = $this->request->param();
         $validator = $this->validate([
             'type' => 'require|number',
-            'title' => 'require',
+            'name' => 'require',
             'parent_id' => 'require|number',
             'sort' => 'require|number'
         ]);

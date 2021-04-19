@@ -28,6 +28,15 @@
     {/block}
     {block name="external_stylesheet"}
     {/block}
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6a2a7f8c2463f437c50636e29495f131";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 <body>
 
@@ -46,12 +55,28 @@
         </div>
         <div class="navbar-collapse collapse" role="navigation">
             <ul class="nav navbar-nav">
-                <li {if $controller == 'index'}class="active"{/if}><a href="{$base_url}">首页</a></li>
-                <li {if $controller == 'tool'}class="active"{/if}><a href="{:url('/tool/index')}">在线工具</a></li>
-                <li {if $controller == 'project'}class="active"{/if}><a href="{:url('/project/index')}">项目推荐</a></li>
+                {if $controller == 'index'}
+                <li class="active"><a href="javascript:;">首页</a></li>
+                {else}
+                <li><a href="{$base_url}">首页</a></li>
+                {/if}
+                {if $controller == 'tool'}
+                <li class="active"><a href="javascript:;">在线工具</a></li>
+                {else}
+                <li><a href="{:url('/tool/index')}">在线工具</a></li>
+                {/if}
+                {if $controller == 'project'}
+                <li class="active"><a href="javascript:;">项目推荐</a></li>
+                {else}
+                <li><a href="{:url('/project/index')}">项目推荐</a></li>
+                {/if}
             </ul>
             <ul class="nav navbar-nav navbar-right hidden-sm">
-                <li {if $controller == 'about'}class="active"{/if}><a href="{:url('/about/index')}"">关于</a></li>
+                {if $controller == 'about'}
+                <li class="active"><a href="javascript:;">关于</a></li>
+                {else}
+                <li><a href="{:url('/about/index')}">关于</a></li>
+                {/if}
             </ul>
         </div>
     </div>
@@ -118,6 +143,29 @@
 <script type="text/javascript" src="{$plugin_asset}/jquery.matchHeight/js/jquery.matchHeight.min.js"></script>
 <script type="text/javascript" src="{$base_asset}/js/site.min.js"></script>
 {/block}
+<script type="text/javascript">
+    $(function () {
+        $('.carousel ul.nav>li').click(function () {
+            var _this = $(this), a = _this.find('a'), placeholder = a.data('placeholder');
+            if (_this.hasClass('.active')) return;
+            _this.siblings().removeClass('active');
+            _this.addClass('active');
+            $('.carousel .search input').attr('placeholder', placeholder)
+        });
+        $('.carousel .search input').keyup(function(e) {
+            if (e.keyCode === 13) {
+                $('.carousel .search button').trigger('click');
+            }
+        })
+        $('.carousel .search button').click(function () {
+            var value = $('.carousel .search input').val()
+            if (value === '') return
+            var dom = $('.carousel ul.nav>li.active'), a = dom.find('a'), href = a.data('href'),
+                query = a.data('query');
+            window.open(href + '?' + query + '=' + value);
+        })
+    });
+</script>
 {block name="external_javascript"}{/block}
 </body>
 </html>

@@ -93,7 +93,7 @@ class SiteLogic extends BaseNavigatorSiteLogic implements Logic
             $this->setError(implode(PHP_EOL, $errors));
             return false;
         }
-        return $this->navigatorSiteModel->save($data);
+        return $this->navigatorSiteModel->saveAll($data);
     }
 
     public function edit($id, $params) {

@@ -61,6 +61,12 @@ php think migrate:generate
 php think make:mvc [-t [table]|-a]
 ```
 
+
+采集站点信息
+```shell
+php think navigator.site:capture
+```
+
 本地测试：
 
 ```shell
