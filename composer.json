@@ -28,7 +28,7 @@
         "ext-dom": "*",
         "phpmailer/phpmailer": "^6.4",
         "jaguarjack/migration-generator": "dev-master",
-        "topthink/think-migration": "^3.0",
+        "topthink/think-migration": "^3.0"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.2",
