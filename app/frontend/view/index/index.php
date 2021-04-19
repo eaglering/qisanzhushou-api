@@ -10,7 +10,7 @@
             <div class="col-sm-84 col-lg-60">
                 <div class="classify-fast ellipsis">
                     <img class="lazy" src="{$base_asset}/images/space.png" width="18" height="18" data-src="{$site.favicon}"/>
-                    <a href="{$site.url}" title="{$site.title}">{$site.title}</a>
+                    <a target="_blank" href="{$site.url}" title="{$site.title}" onclick="_hmt.push(['_trackEvent', 'hot', 'click', '{$site.title}'])">{$site.title}</a>
                 </div>
             </div>
             {/foreach}
@@ -32,10 +32,10 @@
                     <div class="classify">
                         <div class="classify-header ellipsis">
                             <img class="lazy" src="{$base_asset}/images/space.png" height="29" data-src="{$site.favicon}"/>
-                            <a href="{$site.url}" title="{$site.title}">{$site.title}</a>
+                            <a target="_blank" href="{$site.url}" title="{$site.title}" onclick="_hmt.push(['_trackEvent', '{$first.name}', 'click', '{$site.title}'])">{$site.title}</a>
                         </div>
                         <div class="classify-body">
-                            <p class="ellipsis-2">{$site.description}</p>
+                            <p class="ellipsis-2"><a target="_blank" href="{$site.url}" title="{$site.description}" onclick="_hmt.push(['_trackEvent', '{$first.name}', 'click', '{$site.title}'])">{$site.description}</a></p>
                         </div>
                     </div>
                 </div>
@@ -54,10 +54,10 @@
                     <div class="classify">
                         <div class="classify-header ellipsis">
                             <img class="lazy" src="{$base_asset}/images/space.png" height="29" data-src="{$site.favicon}"/>
-                            <a href="{$site.url}" title="{$site.title}">{$site.title}</a>
+                            <a target="_blank" href="{$site.url}" title="{$site.title}" onclick="_hmt.push(['_trackEvent', '{$first.name}', 'click', '{$site.title}'])">{$site.title}</a>
                         </div>
                         <div class="classify-body">
-                            <p class="ellipsis-2">{$site.description}</p>
+                            <p class="ellipsis-2"><a target="_blank" href="{$site.url}" title="{$site.description}" onclick="_hmt.push(['_trackEvent', '{$first.name}', 'click', '{$site.title}'])">{$site.description}</a></p>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
         </div>
         {foreach $first.sites as $site}
         <div class="col-sm-50 ellipsis">
-            <a class="link" href="{$site.url}" title="{$site.title}">{$site.title}</a>
+            <a target="_blank" class="link" href="{$site.url}" title="{$site.title}" onclick="_hmt.push(['_trackEvent', '{$first.name}', 'click', '{$site.title}'])">{$site.title}</a>
         </div>
         {/foreach}
     </div>

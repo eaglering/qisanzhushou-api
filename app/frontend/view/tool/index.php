@@ -21,10 +21,10 @@
                     <div class="col-sm-210 col-md-105">
                         <div class="classify">
                             <div class="classify-header ellipsis">
-                                <a href="{$site.url}" title="{$site.title}">{$site.title}</a>
+                                <a target="_blank" href="{$site.url}" title="{$site.title}">{$site.title}</a>
                             </div>
                             <div class="classify-body">
-                                <p class="ellipsis-2">{$site.description}</p>
+                                <p class="ellipsis-2"><a target="_blank" href="{$site.url}" title="{$site.description}" onclick="_hmt.push(['_trackEvent', '{$first.name}', 'click', '{$site.title}'])">{$site.description}</a></p>
                             </div>
                         </div>
                     </div>

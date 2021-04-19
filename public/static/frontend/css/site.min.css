@@ -217,6 +217,9 @@ a.underline {
 .projects .classify .classify-body p {
     margin: 0;
 }
+.projects .classify .classify-body p a {
+    color: inherit;
+}
 
 .projects .field-set {
     position: relative;

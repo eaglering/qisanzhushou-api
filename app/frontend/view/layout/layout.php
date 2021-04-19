@@ -16,9 +16,6 @@
     <script src="{$plugin_asset}/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Favicons -->
-    <!--    <link rel="apple-touch-icon-precomposed" href="https://cdn.jsdelivr.net/npm/@bootcss/www.bootcss.com@0.0.31/dist/ico/apple-touch-icon-precomposed.png">-->
-    <!--    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/npm/@bootcss/www.bootcss.com@0.0.31/dist/ico/favicon.ico">-->
     <link rel="canonical" href="http{if $Request.server.https}s{/if}://{$Request.server.http_host}/" />
 
     {block name="stylesheet"}
@@ -30,12 +27,14 @@
     {/block}
     <script>
         var _hmt = _hmt || [];
+        {if app()->isProd()}
         (function() {
             var hm = document.createElement("script");
             hm.src = "https://hm.baidu.com/hm.js?6a2a7f8c2463f437c50636e29495f131";
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
+        {/if}
     </script>
 </head>
 <body>
@@ -49,7 +48,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand hidden-sm" href="{$base_url}" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">
+            <a class="navbar-brand hidden-sm" href="{$base_url}">
                 <img src="{$asset}/logo.png" alt="程序之窗"/>
             </a>
         </div>
