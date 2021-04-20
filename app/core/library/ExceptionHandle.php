@@ -7,6 +7,7 @@ use think\db\exception\ModelNotFoundException;
 use think\exception\Handle;
 use think\exception\HttpException;
 use think\exception\HttpResponseException;
+use think\exception\RouteNotFoundException;
 use think\exception\ValidateException;
 use think\Response;
 use Throwable;
@@ -29,6 +30,7 @@ class ExceptionHandle extends Handle
 //        ModelNotFoundException::class,
 //        DataNotFoundException::class,
 //        ValidateException::class,
+        RouteNotFoundException::class
     ];
 
     /**
