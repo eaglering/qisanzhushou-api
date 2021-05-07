@@ -21,7 +21,9 @@ class SiteLogic
      * @return \think\Collection
      */
     public function getHomeHot($limit) {
-        $q = $this->siteModel->where('type', '=', TypeEnum::HOME_HOT);
+        $q = $this->siteModel->where('type', '=', TypeEnum::HOME_HOT)
+            ->order('sort', 'desc')
+            ->order('created_at', 'asc');
         !is_null($limit) && $q->limit($limit);
         return $q->select();
     }
@@ -35,6 +37,8 @@ class SiteLogic
      */
     public function getDocument() {
         return $this->siteModel->where('type', '=', TypeEnum::DOCUMENT)
+            ->order('sort', 'desc')
+            ->order('created_at', 'asc')
             ->with(['category'])
             ->select();
     }
@@ -48,6 +52,8 @@ class SiteLogic
      */
     public function getTool() {
         return $this->siteModel->where('type', '=', TypeEnum::TOOL)
+            ->order('sort', 'desc')
+            ->order('created_at', 'asc')
             ->with(['category'])
             ->select();
     }
@@ -61,6 +67,8 @@ class SiteLogic
      */
     public function getProject() {
         return $this->siteModel->where('type', '=', TypeEnum::PROJECT)
+            ->order('sort', 'desc')
+            ->order('created_at', 'asc')
             ->with(['category'])
             ->select();
     }

@@ -54,7 +54,9 @@ class CategoryLogic
             ->order('sort', 'asc')
             ->with(['sites' => function($query) {
                 /** @var Query $query */
-                $query->where('status', '=', StatusEnum::ONLINE);
+                $query->where('status', '=', StatusEnum::ONLINE)
+                    ->order('sort', 'desc')
+                    ->order('created_at', 'asc');
             }])
             ->select()->toArray();
     }

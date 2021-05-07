@@ -85,7 +85,8 @@ class SiteLogic extends BaseNavigatorSiteLogic implements Logic
                     'url' => $url,
                     'category_id' => $params['category_id'],
                     'hash_code' => md5($url),
-                    'status' => SiteStatusEnum::OFFLINE
+                    'status' => SiteStatusEnum::OFFLINE,
+                    'sort' => $params['sort']
                 ];
             }
         }
